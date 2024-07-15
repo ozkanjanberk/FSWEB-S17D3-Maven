@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ExtendWith(ResultAnalyzer.class)
+@ExtendWith(com.workintech.s17d3.ResultAnalyzer.class)
 class MainTest {
 
 
@@ -68,7 +68,7 @@ class MainTest {
     @DisplayName("Test Kangaroo Setters")
     void testKangarooSetters() {
 
-        Kangaroo kangaroo = new Kangaroo();
+        Kangaroo kangaroo = new Kangaroo(1, "Kenny", 2.0, 85.0, "Male", false);
         kangaroo.setId(2);
         kangaroo.setName("Kanga");
         kangaroo.setHeight(1.8);
@@ -351,7 +351,7 @@ class MainTest {
     @Test
     @DisplayName("ZooGlobalExceptionHandler:HandleGenericException")
     void testHandleGenericException() throws Exception {
-    Kangaroo invalidKangaroo = new Kangaroo();
+    Kangaroo invalidKangaroo = new Kangaroo(1, "Kenny", 2.0, 85.0, "Male", false);
     mockMvc.perform(post("/kangaroos")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(invalidKangaroo)))
