@@ -13,7 +13,7 @@ import java.util.Map;
 @RequestMapping("/kangaroos")
 public class KangarooController {
 
-    private Map<Integer, Kangaroo> kangaroos = new HashMap<>();
+    private Map<Integer, Kangaroo> kangaroos;
 
    @PostConstruct
     public void init(){
@@ -35,7 +35,7 @@ public class KangarooController {
     public Kangaroo save(@RequestBody Kangaroo kangaroo){
        ZooKangarooValidation.isIdValid(kangaroo.getId());
        ZooKangarooValidation.checkKangarooExistance(kangaroos, kangaroo.getId(), false);
-        kangaroos.put(kangaroo.getId(), kangaroo);
+       kangaroos.put(kangaroo.getId(), kangaroo);
         return kangaroos.get(kangaroo.getId());
    }
 

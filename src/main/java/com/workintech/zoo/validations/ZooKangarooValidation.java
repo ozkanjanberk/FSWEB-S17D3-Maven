@@ -5,7 +5,6 @@ import com.workintech.zoo.exceptions.ZooException;
 import org.springframework.http.HttpStatus;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class ZooKangarooValidation {
 
@@ -19,7 +18,7 @@ public class ZooKangarooValidation {
     public static void checkKangarooExistance(Map<Integer, Kangaroo> kangaroos, Integer id, boolean existence) {
     if(existence){
         if(!kangaroos.containsKey(id)){
-            throw new ZooException("Record does not exist" + id, HttpStatus.NOT_FOUND);
+            throw new ZooException("Record does not exist: " + id, HttpStatus.NOT_FOUND);
         }
     }else{
         if(kangaroos.containsKey(id)){

@@ -351,7 +351,7 @@ class MainTest {
     @Test
     @DisplayName("ZooGlobalExceptionHandler:HandleGenericException")
     void testHandleGenericException() throws Exception {
-    Kangaroo invalidKangaroo = new Kangaroo(1, "Kenny", 2.0, 85.0, "Male", false);
+    Kangaroo invalidKangaroo = new Kangaroo();
     mockMvc.perform(post("/kangaroos")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(invalidKangaroo)))
